@@ -1,0 +1,1 @@
+update stock set product_no=1, color_no=1, size_no=1, stock_qty=11 where stock_no=1;

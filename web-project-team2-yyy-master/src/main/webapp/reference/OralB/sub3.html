@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLIC</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style-pc.css">
+    <link rel="stylesheet" href="./css/style-mo.css">
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300&family=Sedgwick+Ave+Display&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/cfb2a3c14b.js" crossorigin="anonymous"></script>
+    <!-- font -->
+    <link rel="stylesheet" href="./css/font.css">
+    <!-- swiper js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <!-- js -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="./js/redesign.js"></script>
+</head>
+<body>
+    <header class="pc">
+        <div class="inheader w1200">
+            <div class="logoArea">
+                <h1><a href="./index.html"><img src="./img/main/logo/mainlogo.svg" alt="오랄비 메인로고"></a></h1>
+            </div>
+            <div class="gnb">
+                <ul>
+                    <li><a href="./sub1.html">전동칫솔</a>
+                        <ul>
+                            <li><a href="#" class="eg">iO Series</a></li>
+                            <li><a href="#">프리미엄</a></li>
+                            <li><a href="#">입문자용</a></li>
+                            <li><a href="#">키즈 전동칫솔</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="./sub2.html">치실&치간칫솔</a>
+                        <ul>
+                            <li><a href="#">치실</a></li>
+                            <li><a href="#">치간칫솔</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">전동칫솔 리필모</a>
+                        <ul>
+                            <li><a href="#"><b class="eg">iO</b> 호환용</a></li>
+                            <li><a href="#"><b class="eg">iO</b> 제외</a></li>
+                            <li><a href="#">키즈 리필모</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="./sub3.html">일반칫솔</a>
+                        <ul>
+                            <li><a href="#" class="eg">CLIC</a></li>
+                            <li><a href="#">세정전문</a></li>
+                            <li><a href="#">잇몸전문</a></li>
+                            <li><a href="#">미백전문</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">키즈칫솔</a>
+                        <ul>
+                            <li><a href="#">스테이지스 키즈</a></li>
+                            <li><a href="#">비니 어린이 칫솔</a></li>
+                            <li><a href="#">키즈 전동칫솔</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="search">
+                <label for="search">검색</label>
+                <input type="text" id="search" placeholder="결과">
+            </div>
+        </div>
+    </header>
+    <header class="mo">
+        <div class="inheader">
+            <h1 class="mlogo"><a href="./index.html"><img src="./img/main/logo/mainlogo.svg" alt="오랄비 로고"></a></h1>
+            <div class="btnMoMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="gnb">
+            <div class="ingnb">
+                <ul class="gnbli">
+                    <li><a href="#">전동칫솔</a>
+                        <ul>
+                            <li><a href="#" class="eg">iO Series</a></li>
+                            <li><a href="#">프리미엄</a></li>
+                            <li><a href="#">입문자용</a></li>
+                            <li><a href="#">키즈 전동칫솔</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">치실&치간칫솔</a>
+                        <ul>
+                            <li><a href="#">치실</a></li>
+                            <li><a href="#">치간칫솔</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">전동칫솔 리필모</a>
+                        <ul>
+                            <li><a href="#"><b class="eg">iO</b> 호환용</a></li>
+                            <li><a href="#"><b class="eg">iO</b> 제외</a></li>
+                            <li><a href="#">키즈 리필모</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">일반칫솔</a>
+                        <ul>
+                            <li><a href="#" class="eg">CLIC</a></li>
+                            <li><a href="#">세정전문</a></li>
+                            <li><a href="#">잇몸전문</a></li>
+                            <li><a href="#">미백전문</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">키즈칫솔</a>
+                        <ul>
+                            <li><a href="#">스테이지스 키즈</a></li>
+                            <li><a href="#">비니 어린이 칫솔</a></li>
+                            <li><a href="#">키즈 전동칫솔</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="search">
+                    <label for="search">검색</label>
+                    <input type="text" id="search" placeholder="결과">
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="w1200">
+            <section class="sub3main">
+                <div class="sub3mainbneer">
+                    <img src="./img/sub3/1x/sub3mainbneer.png" alt="">
+                </div>
+                <div class="sub3mainbneerlogo">
+                    <img src="./img/sub3/1x/sub3logo.svg" alt="">
+                </div>
+            </section>
+            <section class="sub3scroll pc">
+                <ul>
+                    <li class="sub3scroll1">
+                        <div class="clicimg1L"></div>
+                        <div class="clicimg1R">
+                            <p>
+                                <b class="eg">Oral-B Clic</b> 칫솔은<br>
+                                독특하고 상징적 디자인과<br>
+                                차세대 세척 성능을 결합했습니다.
+                            </p>
+                        </div>
+                        <div class="linem">
+                        </div>
+                    </li>
+                    <li class="sub3scroll2">
+                        <div class="sub3scroll2img">
+                            <img src="./img/sub3/1x/clic4.png" alt="">
+                        </div>
+                        <div class="sub3scroll2text">
+                            <p>
+                                세정까지 탁월한 분리형 칫솔모와 <br>
+                                지속사용 가능한 핸들의
+                            </p>
+                            <h3>혁신적인 만남</h3>
+                        </div>
+                    </li>
+                    <li>
+                        <section class="sub3detail">
+                            <div class="sub3detailp">
+                                <h2>지속되는 아름다움</h2>
+                                <p>
+                                    원하는 핸들과 교체 가능한 칫솔모를 조합하여 자신만의 브러시를 만드세요.<br>
+                                    모든 칫솔모는 치과의사와 함께 설계되었으며 여러 특허 기술이 적용되어 뛰어난 <br>
+                                    세척 성능과 정말 편안하게 칫솔을 사용할 수 있게 해드립니다.
+                                </p>
+                            </div>
+                            <div class="sub3detailimg">
+                                <img src="./img/sub3/1x/clic5.png" alt="">
+                            </div>
+                        </section>
+                    </li>
+                </ul>
+            </section>
+            <section class="sub3scroll sub3mo">
+                <ul class="sub3scrollul">
+                    <li class="sub3scroll1">
+                        <div class="clicimg1">
+                            <p>
+                            Oral-B Clic 칫솔은<br>
+                            독특하고 상징적 디자인과<br>
+                            차세대 세척 성능을 결합했습니다.
+                            </p>
+                        </div>
+                        <div>
+                            <img src="./img/sub3/1x/clic3.png" alt="">
+                        </div>
+                    </li>
+                    <li class="sub3scroll2">
+                        <div class="sub3scroll2img">
+                            <img src="./img/sub3/1x/clic4.png" alt="">
+                        </div>
+                        <div class="sub3scroll2text">
+                            <p>
+                                세정까지 탁월한 분리형 칫솔모와 <br>
+                                지속사용 가능한 핸들의
+                            </p>
+                            <h3>혁신적인 만남</h3>
+                        </div>
+                    </li>
+                    <li>
+                        <section class="sub3detail">
+                            <div class="sub3detailp">
+                                <h2>지속되는 아름다움</h2>
+                                <p>
+                                    원하는 핸들과 교체 가능한 칫솔모를 조합하여 자신만의 브러시를 만드세요.<br>
+                                    모든 칫솔모는 치과의사와 함께 설계되었으며 여러 특허 기술이 적용되어 뛰어난 <br>
+                                    세척 성능과 정말 편안하게 칫솔을 사용할 수 있게 해드립니다.
+                                </p>
+                            </div>
+                            <div class="sub3detailimg">
+                                <img src="./img/sub3/1x/clic5.png" alt="">
+                            </div>
+                        </section>
+                    </li>
+                </ul>
+            </section>
+            <section class="Recommendation">
+                <h2>이런 분들께 <span>추천</span>해요</h2>
+                <ul class="Recommendationul">
+                    <li>
+                        <h3>
+                            잇몸이<br>
+                            연약해요
+                        </h3>
+                        <p>
+                            부드럽지만 개운한<br>
+                            칫솔을 찾고 있는분
+                        </p>
+                    </li>
+                    <li>
+                        <h3>
+                            구강 고민이<br>
+                            많아요
+                        </h3>
+                        <p>
+                            다양한 칫솔모를<br>
+                            경험하고 싶은 분
+                        </p>
+                    </li>
+                    <li>
+                        <h3>
+                            디자인도<br>
+                            중요해요
+                        </h3>
+                        <p>
+                            트렌디하고 예쁜<br>
+                            칫솔을 찾고 있는 분
+                        </p>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <div class="sub3lick">
+                    <a href="#">
+                        <div class="sub3lickimg">   
+                            <div class="sub3licktext">
+                                <h3>
+                                    <span class="clic">당신의</span>에<br>
+                                    가장 적합한 제품
+                                </h3>
+                                <p>클릭 리필모 알아보기 <i class="fa-solid fa-circle-arrow-right fa-sm"></i></p>
+                            </div>
+                            <div class="sub3lickinimg">
+                                <img src="./img/sub3/1x/sub3lickimg.png" alt="">
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <div class="ft">
+            <ul class="ftul">
+                <li><a href="#">왜<em class="eg">ORAL-B</em> 이어야할까</a>
+                    <ul>
+                        <li><a href="#"><b class="eg">Oral-B</b> 전동 칫솔</a></li>
+                        <li><a href="#"><b class="eg">Oral-B</b> 치실</a></li>
+                        <li><a href="#">전동 칫솔이 필요한 이유</a></li>
+                        <li><a href="#">어린이 구강 건강</a></li>
+                        <li><a href="#">디즈니 매직 타이머</a></li>
+                        <li><a href="#">구강 위생 조언</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">상태</a>
+                    <ul>
+                        <li><a href="#">입냄새</a></li>
+                        <li><a href="#">잇몸건강</a></li>
+                        <li><a href="#">치석 및 플라그</a></li>
+                        <li><a href="#">치아 민감성</a></li>
+                        <li><a href="#">치아 미백</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">고객문의</a>
+                    <ul>
+                        <li><a href="#">고객지원</a></li>
+                        <li><a href="#">지원</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <dl>
+                <dt class="eg">Address</dt>
+                <dd>서울특별시 영등포구 국제금융로 10(서울 국제금융센터)37층 (우:07326)</dd>
+                <dt class="eg">Customer Center</dt>
+                <dd>고객센터:070-8018-0616</dd>
+            </dl>
+        </div>
+        <div class="fb">
+            <div class="infb">
+                <ul>
+                    <li><a href="#">이용약관</a></li>
+                    <li><a href="#">개인정보처리방침</a></li>
+                    <li><a href="#" class="eg">AdChoices</a></li>
+                    <li><a href="#">사이트맵</a></li>
+                    <li><a href="#" class="eg">2023 Procter & Gamble</a></li>
+                </ul>
+                <dl>
+                    <dt>상호명<b>:</b></dt>
+                    <dd>한국피앤지판매유한회사</dd>
+                    <dt>대표이사<b>:</b></dt>
+                    <dd class="eg">NIYAZEE BALAKA</dd>
+                    <dt>사업자등록번호<b>:</b></dt>
+                    <dd>2208609268</dd>
+                </dl>
+                <dl>
+                    <dt>통신판매업번호<b>:</b></dt>
+                    <dd>2019-서울영등포-1637</dd>
+                    <dt>대표이메일<b>:</b></dt>
+                    <dd class="eg">pg@innsbruck.co.kr</dd>
+                </dl>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itwill.team2.mapper.CartMapper">
+  
+  
+    		<resultMap type="com.itwill.team2.domain.Cart" id="cartResultMap" autoMapping="true">
+			<id column="cart_no" property="cartNo"/>
+			<association property="user" javaType="com.itwill.team2.domain.User" autoMapping="true">
+			<id column="user_no" property="userNo"/>
+			</association>
+			<association property="product" javaType="com.itwill.team2.domain.Product" autoMapping="true">
+			<id column="product_no" property="productNo"/>
+			
+			<association property="category" javaType="com.itwill.team2.domain.Category" autoMapping="true">
+			<id column="category_no" property="categoryNo"/>
+			</association>
+			
+			<association property="subCategory" javaType="Category">
+				<id property="categoryNo" column="sub_category_no"/>
+				<result property="categoryName" column="sub_category_name"/>
+			</association>
+			
+			<collection property="productImages" ofType="ProductImage" autoMapping="true">
+		 		<id property="productImageNo" column="product_image_no"/>
+		 		
+		 		<association property="product" javaType="Product" autoMapping="false">
+		 			<id property="productNo" column="product_no"/>	
+		 		</association>
+		 	</collection>
+			</association>
+			
+			
+			
+			
+			
+			
+			
+			<association property="color" javaType="com.itwill.team2.domain.Color" autoMapping="true">
+			<id column="color_no" property="colorNo"/>
+			</association>
+			<association property="size" javaType="com.itwill.team2.domain.Size" autoMapping="true">
+			<id column="size_no" property="sizeNo"/>
+			</association>
+		
+	</resultMap>
+
+
+	<insert id="insertCart" parameterType="com.itwill.team2.domain.Cart">
+			<selectKey order="BEFORE" 
+				resultType="int"  
+			   keyProperty="cartNo">
+				 select cart_cart_no_SEQ.nextval from dual
+				   </selectKey>
+		INSERT INTO Cart (cart_No, cart_Qty, user_No, product_No, color_no, size_no)
+		VALUES (#{cartNo}, #{cartQty}, #{user.userNo}, #{product.productNo}, #{color.colorNo} ,#{size.sizeNo})
+	</insert>
+	
+	<update id="updateCart" parameterType="com.itwill.team2.domain.Cart">
+			UPDATE Cart 
+			SET cart_Qty = #{cartQty}
+			WHERE cart_no = #{cartNo}
+	</update>
+	
+	<delete id="deleteCart" parameterType="int">
+		DELETE FROM Cart WHERE cart_No = #{cartNo} 
+	</delete>
+	
+	<delete id="deleteCartAll" parameterType="int" >
+		DELETE FROM Cart WHERE user_No = #{userNo}
+	</delete>
+	
+	<select id="selectCartUserNoList" parameterType="int"
+			resultMap="cartResultMap">
+	 SELECT 
+    c.cart_No, 
+    c.cart_Qty, 
+    u.user_no,
+    u.user_name,    
+    p.product_no,
+    p.product_name,    
+    p.product_price,
+    pi.product_image_name,
+    s.size_name,
+    co.color_name,
+    ca.category_name,
+    su.sub_category_name
+FROM 
+    Cart c
+JOIN 							
+    Product p ON c.product_no = p.product_no
+JOIN 
+    Users u ON c.user_no = u.user_no  
+JOIN 
+    Product_Image pi ON p.product_no = pi.product_no 
+JOIN 
+    Sizes s ON c.size_no = s.size_no 
+JOIN 
+    Color co ON c.color_no = co.color_no 
+    join 
+    category ca on p.category_no = ca.category_no
+    join
+   sub_category su on p.sub_category_no = su.sub_category_no
+    
+WHERE 
+    u.user_No = #{userNo}
+and pi.product_image_name like 'TITLE_1%'
+ORDER BY pi.product_image_name asc
+	</select>
+	<select id="findByCartNo" parameterType="int" 
+			resultMap="cartResultMap"> 
+		select 
+		c.cart_no, c.cart_qty,
+		u.user_no,
+		p.product_no, p.product_name, p.product_price,
+        pi.product_image_name,
+        ca.category_no,
+        ca.category_name,
+        sa.sub_category_no,
+        sa.sub_category_name,
+		s.size_no, s.size_name,
+		co.color_no , co.color_name
+		from cart c
+		join users u on c.user_no = u.user_no
+		join product p on c.product_no = p.product_no
+        join product_image pi on p.product_no = pi.product_no
+        join category ca on p.category_no = ca.category_no
+        join sub_category sa on p.sub_category_no = sa.sub_category_no
+		join sizes s on c.size_no = s.size_no
+		join color co on c.color_no = co.color_no
+		where cart_no = #{cartNo} and pi.product_image_name like 'TITLE_1%'
+	</select>
+
+
+
+</mapper>

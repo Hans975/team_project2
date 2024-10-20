@@ -1,0 +1,19 @@
+package com.itwill.team2.domain;
+
+import java.sql.Date;
+import java.util.List;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class ProductImage {
+	private Integer productImageNo;
+	private String productImageName;
+	private Product product;
+}

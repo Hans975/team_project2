@@ -1,0 +1,59 @@
+
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.3.4'
+	id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'com.itwill.team2'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+	all {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	/******Apache Commons IO 라이브러리 추가(파일 입/출력 처리)***/
+	implementation 'commons-io:commons-io:2.11.0'
+	/****** web *************/
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	/****** mybatis설정 *****/
+	implementation 'org.mybatis:mybatis:3.5.15'
+	/***** lombok설정 ********/
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	/***** oracle jdbc driver********/
+	runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
+    /***** log4j2설정 *****/
+    implementation 'org.springframework.boot:spring-boot-starter-log4j2'
+	 /***JSP사용설정[스프링부트 3.0 >= ]*****/
+    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+    implementation 'jakarta.servlet:jakarta.servlet-api' 					
+    implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api' 	
+    implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl' 
+	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.3'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	
+    
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

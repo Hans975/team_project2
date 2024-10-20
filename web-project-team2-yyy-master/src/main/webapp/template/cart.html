@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    
+    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <link rel="stylesheet" href="./css/index.css?ver=3">
+    <script src="./js/index.js"></script>
+
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <!-- 로고 -->
+            <div class="hd_container">
+                <div class="top_logo">
+                    <a href=""><img src="img/header/top_logo_pc.png" alt=""></a>
+                </div>
+                <div class="top_menu">
+                    <ul class="top_menu_dep1">
+                        <!-- <li> 하나당 카테고리분류1개 -->
+                        <li><a href="">베스트</a></li>
+                        <li><a href="">신상품</a></li>
+                        <li><a href="">여성</a>
+                            <div class="top_menu_dep2_container">
+                                <div class="top_menu_dep2_innerContainer">
+                                    <ul class="top_menu_dep2_01">
+                                        <li><a href="">베스트</a></li>
+                                        <li><a href="">신상품</a></li>
+                                    </ul>
+                                    <ul class="top_menu_dep2_02">
+                                        <li><a href="">신상품</a></li>
+                                        <li><a href="">아우터</a></li>
+                                        <li><a href="">상의</a></li>
+                                        <li><a href="">하의</a></li>
+                                    </ul>
+                                    <ul class="top_menu_dep2_03">
+                                        <li>
+                                            <img src="img/product/024110f45ce6d4d2dee098e519435d48.jpg" alt="">
+                                        </li>
+                                        <li>
+                                            <img src="img/product/053f0f2c7e5aaa2475e6e69bf165223c.jpg" alt="">
+                                        </li>
+                                        <li>
+                                            <img src="img/product/07edcc45d97465c73c4b3c512d725244.jpg" alt="">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- (회원가입,로그인),검색,찜리스트,바구니 -->
+                <div class="top_menber">
+                    <ul>
+                        <li class="top_menuUserIcon">
+                            <a href=""><img src="img/header/top_mypage.png" alt="" class="top_menber_bt_bk"></a>
+                            <div>
+                                <a href="">LOGOUT</a>
+                                <a href="">MYPAGE</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a href=""><img src="img/header/top_search.png" alt="" class="top_menber_bt_bk"></a>
+                        </li>
+                        <li>
+                            <a href=""><img src="img/header/top_wish.png" alt="" class="top_menber_bt_bk"></a>
+                        </li>
+                        <li>
+                            <a href=""><img src="img/header/top_cart_pc.png" alt="" class="top_menber_bt_bk"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="cartMainContainer">
+                <div class="cartTitleBox">
+                    <h2>장바구니</h2>
+                </div>
+                <div class="cartListBox">
+                    <div class="cartListTitle">
+                        <ul>
+                            <li><input type="checkbox"></li>
+                            <li>상품정보</li>
+                            <li>수량</li>
+                            <li>합계</li>
+                            <li>선택</li>
+                        </ul>
+                    </div>
+                    <div class="cartListSelect">
+                        <ul>
+                            <li><input type="checkbox"></li>
+                            <li class="cartListSelectImgBox">
+                                <div class="cartListSelectImg">
+                                    <img src="./img/product/024110f45ce6d4d2dee098e519435d48.jpg" alt="상품이미지">
+                                </div>
+                                <div class="cartListSelectTextBox">
+                                    <h5>상품이름</h5>
+                                    <p>상품옵션</p>
+                                </div>
+                            </li>
+                            <li class="cartListSelectQty">
+                                <!-- 상품디테일의 수량선택과 이름이 같아 문제가있는지 확인필요 -->
+                                <a href="#none" class="down">-</a>
+                                    <span><input id="SelectQty" type="text" value="1"></span>
+                                <a href="#none" class="up">+</a>
+                            </li>
+                            <li>
+                                <span>상품금액 X 상품개수 = 총합계</span>
+                            </li>
+                            <li class="cartListButtons">
+                                <a href="#">주문하기</a>
+                                <a href="#">관심상품</a>
+                                <a href="#">삭제</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="cartListButtonTab">
+                    <div>
+                        <a href="#">선택상품 삭제</a>
+                        <a href="#">장바구니비우기</a>
+                    </div>
+                    <div class="cartListTotPriceBox">
+                        <span>결제예정금액</span>
+                        <br>
+                        <span class="cartListTotPrice">34,000</span>
+                    </div>
+                </div>
+                <div class="cartListButtonTab2">
+                    <a href="#">선택상품주문</a>
+                    <a href="#">쇼핑계속하기</a>
+                    <a href="#">전체상품주문</a>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="ftContainer">
+                <div class="ftSection01">
+                    <span>111-222</span>
+                    <br>
+                    <span>상담시간:안해줘</span>
+                    <br>
+                    <span>email:babo1@naver.com(단체주문 문의)</span>
+                </div>
+                <div class="ftSection02">
+                    <ul>
+                        <li>브랜드소개</li>
+                        <li>개인정보 처리방침</li>
+                        <li>공지사항</li>
+                    </ul>
+                </div>
+                <div class="ftSection03">
+                    <ul>
+                        <li><a href="">앱 다운로드</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itwill.team2.mapper.OrderMapper">
+   <resultMap type="com.itwill.team2.domain.Order" id="orderResultMap" autoMapping="true">
+      <id column="order_no" property="orderNo"/>
+      
+      <association property="user" javaType="com.itwill.team2.domain.User" autoMapping="true">
+         <id column="user_no" property="userNo"/>
+      </association>
+      
+      
+      <collection property="orderItems" javaType="java.util.List" ofType="com.itwill.team2.domain.OrderItem" autoMapping="true">
+         <id column="order_item_no"  property="orderItemNo"/>
+         <association property="product" javaType="com.itwill.team2.domain.Product" autoMapping="true">
+            <id column="product_no" property="productNo"/>
+            <association property="category" javaType="Category" autoMapping="true">
+				<id property="categoryNo" column="category_no"/>
+			</association>
+			<association property="subCategory" javaType="Category">
+				<id property="categoryNo" column="sub_category_no"/>
+				<result property="categoryName" column="sub_category_name"/>
+			</association>
+            <collection property="productImages" ofType="ProductImage" autoMapping="true">
+             <id property="productImageNo" column="product_image_no"/>
+             
+             <association property="product" javaType="Product" autoMapping="false">
+                <id property="productNo" column="product_no"/>   
+             </association>
+          </collection>
+         </association>
+         <association property="color" javaType="com.itwill.team2.domain.Color" autoMapping="true">
+         <id column="color_no" property="colorNo"/>
+         </association>
+         <association property="size" javaType="com.itwill.team2.domain.Size" autoMapping="true">
+            <id column="size_no" property="sizeNo"/>
+         </association>
+      </collection>
+      
+      
+   </resultMap>
+
+
+   <insert id="insert" parameterType="com.itwill.team2.domain.Order">
+      <selectKey order="BEFORE" 
+               resultType="int"  
+               keyProperty="orderNo">
+         select orders_order_no_SEQ.nextval from dual 
+      </selectKey>
+      insert into orders(order_no, order_name, order_date, order_price, user_no) 
+               values (#{orderNo}, #{orderName}, sysdate, #{orderPrice}, #{user.userNo})
+   </insert>
+   <insert id="insertOrderItem" parameterType="com.itwill.team2.domain.OrderItem">
+      <selectKey order="BEFORE" 
+               resultType="int"  
+               keyProperty="orderItemNo">
+         select order_item_order_item_no_SEQ.nextval from dual
+      </selectKey>
+      insert into order_item(order_item_no, order_item_qty, order_no, product_no, color_no, size_no) 
+               values(#{orderItemNo}, #{orderItemQty}, orders_order_no_SEQ.currval, #{product.productNo}, #{color.colorNo}, #{size.sizeNo})
+   </insert>
+    <select id="findOrderByUserNo" parameterType="int" resultMap="orderResultMap" >
+       select order_no, order_name, order_date, order_price, user_no from orders where user_no = #{userNo} ORDER BY order_date DESC
+    </select>
+    <select id="findOrderWithOrderItemByOrderNo" parameterType="int" resultMap="orderResultMap">
+       select
+          p.product_no, 
+          pi.product_image_name,
+          p.product_name, 
+          p.product_price,
+          ca.category_name,
+          sa.sub_category_name,
+          c.color_name,
+          s.size_name,
+          oi.order_item_qty,
+          o.order_no
+       from orders o 
+       join order_item oi on o.order_no = oi.order_no  
+       join product p on oi.product_no = p.product_no 
+       join product_image pi on p.product_no = pi.product_no 
+       join category ca on p.category_no = ca.category_no
+       join sub_category sa on p.sub_category_no = sa.sub_category_no
+       join color c on oi.color_no = c.color_no 
+       join sizes s on oi.size_no = s.size_no 
+       where  o.order_no = #{orderNo} and pi.product_image_name like '%TITLE_1%'
+    </select>
+    <delete id="deleteByOrderNo" parameterType="int">
+       delete from orders where order_no = #{orderNo}
+    </delete>
+</mapper>
