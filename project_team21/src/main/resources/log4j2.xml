@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d [%-5p] %c - %m%n"/>
+    </Console>
+  </Appenders>
+  
+  <Loggers>
+     <!-- 
+     <Logger name="org.springframework" level="debug">
+            <AppenderRef ref="Console"/>
+     </Logger>
+     <Logger name="org.apache" level="debug">
+            <AppenderRef ref="Console"/>
+     </Logger>
+     <Logger name="org.mybatis" level="debug">
+            <AppenderRef ref="Console"/>
+     </Logger>
+     <Logger name="java.sql" level="debug">
+            <AppenderRef ref="Console"/>
+     </Logger>
+     <Logger name="java.sql.Connetion" level="debug">
+            <AppenderRef ref="Console"/>
+     </Logger>
+     <Logger name="java.sql.Statement" level="debug">
+            <AppenderRef ref="Console"/>
+     </Logger>
+     <Logger name="java.sql.PreparedStatement" level="debug">
+            <AppenderRef ref="Console"/>
+     </Logger>
+     <Logger name="java.sql.ResultSet" level="debug">
+            <AppenderRef ref="Console"/>
+     </Logger> -->
+    
+    <Root level="WARN">
+      <AppenderRef ref="Console"/>
+    </Root>
+    
+  </Loggers>
+</Configuration>

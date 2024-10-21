@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itwill.team2.mapper.ProductMapper">
+	<resultMap id="productResultMap" type="Product" autoMapping="true">
+		<id property="productNo" column="product_no"/>
+			
+			
+			<association property="category" javaType="Category" autoMapping="true">
+				<id property="categoryNo" column="category_no"/>
+			</association>
+			
+			
+			<association property="subCategory" javaType="Category">
+				<id property="categoryNo" column="sub_category_no"/>
+				<result property="categoryName" column="sub_category_name"/>
+			</association>
+		
+		
+		 	<collection property="productImages" ofType="ProductImage" autoMapping="true">
+		 		<id property="productImageNo" column="product_image_no"/>
+		 		
+		 		<association property="product" javaType="Product" autoMapping="false">
+		 			<id property="productNo" column="product_no"/>	
+		 		</association>
+		 	</collection>
+		 	
+		 	
+		 	<collection property="colors" ofType="Color" autoMapping="true">
+		 		<id property="colorNo" column="color_no"/>
+		 		
+		 		<association property="product" javaType="Product" autoMapping="false">
+		 			<id property="productNo" column="product_no"/>	
+		 		</association>
+		 	</collection>
+			
+			
+			<collection property="sizes" ofType="Size" autoMapping="true">
+				<id property="sizeNo" column="size_no"/>
+				
+		 		<association property="product" javaType="Product" autoMapping="false">
+		 			<id property="productNo" column="product_no"/>	
+		 		</association>
+			</collection> 	
+			
+			
+			 <collection property="reviews" ofType="Review" autoMapping="true">
+				<id property="reviewNo" column="review_no"/>
+			</collection>
+			
+			
+			<collection property="stocks" ofType="Stock" autoMapping="true">
+				<id property="stockNo" column="stock_no"/>
+				<result property="stockQty" column="stock_qty"/>
+				
+				<association property="product" javaType="Product" autoMapping="false">
+					<id property="productNo" column="product_no"/>
+				</association>
+				
+				<association property="color" javaType="Color" autoMapping="false">
+					<id property="colorNo" column="color_no"/>
+					<result property="colorName" column="color_name"/>
+				</association>
+				
+				<association property="size" javaType="Size" autoMapping="false">
+					<id property="sizeNo" column="size_no"/>
+					<result property="sizeName" column="size_name"/>
+				</association>
+			</collection>
+			
+	</resultMap>
+	
+
+
+
+    <select id="selectProductByCategory" parameterType="String" resultMap="productResultMap">
+    	SELECT p.product_no, p.product_name, p.product_price, 
+    	pi.product_image_name, 
+    	c.category_name,
+    	sc.sub_category_name,
+    	cr.color_code,
+    	r.review_no
+    	FROM product p
+		JOIN product_image pi on p.product_no = pi.product_no
+		JOIN category c on p.category_no = c.category_no
+		JOIN sub_category sc on p.sub_category_no = sc.sub_category_no
+		JOIN product_color pc on p.product_no = pc.product_no
+		JOIN color cr on pc.color_no = cr.color_no
+		LEFT OUTER JOIN review r on p.product_no = r.product_no 
+		WHERE category_name = #{categoryName} 
+		AND pi.product_image_name LIKE 'TITLE_1%'
+		ORDER BY p.product_no DESC
+    </select>
+    
+    
+    <select id="selectProductByCategories" parameterType="map" resultMap="productResultMap">
+    	SELECT p.product_no, p.product_name, p.product_price, 
+    	pi.product_image_name, 
+    	c.category_name,
+    	sc.sub_category_name,
+    	cr.color_code
+    	FROM product p
+		JOIN product_image pi on p.product_no = pi.product_no
+		JOIN category c on p.category_no = c.category_no
+		JOIN sub_category sc on p.sub_category_no = sc.sub_category_no
+		JOIN product_color pc on p.product_no = pc.product_no
+		JOIN color cr on pc.color_no = cr.color_no
+		WHERE c.category_name = #{category.categoryName} 
+		AND sc.sub_category_name = #{sub_category.categoryName} 
+            AND pi.product_image_name LIKE 'TITLE_1%'
+		ORDER BY p.product_no DESC
+    </select>
+    
+    <select id="selectProductOrderByNo" resultMap="productResultMap">
+    	SELECT 
+    	p.product_no, p.product_name, p.product_price, 
+    	pi.product_image_name, 
+    	c.category_name,
+    	sc.sub_category_name,
+    	cr.color_code,
+    	r.review_no
+    	FROM product p
+		JOIN product_image pi on p.product_no = pi.product_no
+		JOIN category c on p.category_no = c.category_no
+		JOIN sub_category sc on p.sub_category_no = sc.sub_category_no
+		JOIN product_color pc on p.product_no = pc.product_no
+		JOIN color cr on pc.color_no = cr.color_no
+		LEFT OUTER JOIN review r on p.product_no = r.product_no 
+		WHERE pi.product_image_name LIKE 'TITLE_1%'
+		ORDER BY p.product_no DESC
+    </select>
+    
+    <select id="selectProductByNo" parameterType="int" resultMap="productResultMap">
+    	SELECT 
+       	p.product_no, p.product_name, p.product_price,
+      	pi.product_image_no, pi.product_image_name, 
+        cr.color_no, cr.color_name, cr.color_code, 
+        s.size_no, s.size_name, 
+        c.category_no, c.category_name,
+        sc.sub_category_no, sc.sub_category_name, 
+        st.stock_no, st.stock_qty
+        FROM product p 
+        JOIN product_image pi on p.product_no = pi.product_no
+        JOIN category c on p.category_no = c.category_no
+        JOIN sub_category sc on p.sub_category_no = sc.sub_category_no
+        JOIN product_color pc on p.product_no = pc.product_no
+        JOIN color cr on pc.color_no = cr.color_no
+        JOIN product_size ps on p.product_no = ps.product_no
+        JOIN sizes s on ps.size_no = s.size_no
+        JOIN stock st on p.product_no = st.product_no and pc.color_no = st.color_no and ps.size_no = st.size_no
+        WHERE p.product_no=#{productNo}
+        ORDER BY pi.product_image_name DESC
+    </select>
+    
+    <select id="selectProductSearchName" parameterType="String" resultMap="productResultMap">
+    	SELECT 
+       	p.product_no, p.product_name, p.product_price,
+      	pi.product_image_no, pi.product_image_name, 
+        cr.color_no, cr.color_name, cr.color_code, 
+        s.size_no, s.size_name, 
+        c.category_no, c.category_name,
+        sc.sub_category_no, sc.sub_category_name, 
+        st.stock_no, st.stock_qty
+        FROM product p 
+        JOIN product_image pi on p.product_no = pi.product_no
+        JOIN category c on p.category_no = c.category_no
+        JOIN sub_category sc on p.sub_category_no = sc.sub_category_no
+        JOIN product_color pc on p.product_no = pc.product_no
+        JOIN color cr on pc.color_no = cr.color_no
+        JOIN product_size ps on p.product_no = ps.product_no
+        JOIN sizes s on ps.size_no = s.size_no
+        JOIN stock st on p.product_no = st.product_no and pc.color_no = st.color_no and ps.size_no = st.size_no
+        WHERE p.product_name like '%' || #{productName} || '%'
+        ORDER BY pi.product_image_name DESC
+    </select>
+    
+    <!--  <select id="selectProductByNo" parameterType="int" resultMap="productResultMap">
+    	SELECT 
+       	p.product_no, p.product_name, p.product_price,
+      	pi.product_image_no, pi.product_image_name, 
+        cr.color_no, cr.color_name, cr.color_code, 
+        s.size_no, s.size_name, 
+        st.stock_no, st.stock_qty,
+        r.review_no, r.user_no, r.review_content, r.review_date, r.review_score, ri.review_image_name,
+        c.category_no, c.category_name,
+        sc.sub_category_no, sc.sub_category_name 
+        FROM product p 
+        JOIN product_image pi on p.product_no = pi.product_no
+        JOIN category c on p.category_no = c.category_no
+        JOIN sub_category sc on p.sub_category_no = sc.sub_category_no
+        JOIN product_color pc on p.product_no = pc.product_no
+        JOIN color cr on pc.color_no = cr.color_no
+        JOIN product_size ps on p.product_no = ps.product_no
+        JOIN sizes s on ps.size_no = s.size_no
+        LEFT OUTER JOIN review r on p.product_no = r.product_no
+        LEFT OUTER JOIN review_image ri on r.review_no = ri.review_no
+        JOIN stock st on p.product_no = st.product_no and pc.color_no = st.color_no and ps.size_no = st.size_no
+        WHERE p.product_no=#{productNo}
+    </select>-->
+    
+    
+    
+    <!--product insert-->
+   	<insert id="insertProduct" parameterType="Product">
+   		<selectKey order="BEFORE" resultType="int" keyProperty="productNo">
+   			SELECT product_product_no_seq.nextval FROM dual
+   		</selectKey>
+   		INSERT INTO PRODUCT
+		(PRODUCT_NO, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_SALES, CATEGORY_NO, SUB_CATEGORY_NO) 
+    	VALUES ( #{productNo}, #{productName}, #{productPrice}, #{productSales}, #{category.categoryNo}, #{subCategory.categoryNo})
+   	</insert>
+   	<insert id="insertProductImage" parameterType="ProductImage">
+   		INSERT INTO PRODUCT_IMAGE
+		(PRODUCT_IMAGE_NO, PRODUCT_IMAGE_NAME, PRODUCT_NO)
+		VALUES (PRODUCT_IMAGE_PRODUCT_IMAGE_NO_SEQ.NEXTVAL, #{productImageName}, PRODUCT_PRODUCT_NO_SEQ.CURRVAL)
+   	</insert>
+   	<insert id="insertProductColor" parameterType="Color">
+   		INSERT INTO PRODUCT_COLOR
+		(PRODUCT_COLOR_NO, PRODUCT_NO, COLOR_NO)
+		VALUES (PRODUCT_COLOR_PRODUCT_COLOR_NO_SEQ.NEXTVAL, PRODUCT_PRODUCT_NO_SEQ.CURRVAL , #{colorNo})
+   	</insert>
+   	<insert id="insertProductSize" parameterType="Size">
+   		INSERT INTO PRODUCT_SIZE
+		(PRODUCT_SIZE_NO, PRODUCT_NO, SIZE_NO) 
+		VALUES (PRODUCT_SIZE_PRODUCT_SIZE_NO_SEQ.NEXTVAL, PRODUCT_PRODUCT_NO_SEQ.CURRVAL, #{sizeNo})
+   	</insert>
+   	<insert id="insertProductStock" parameterType="Stock">
+   		INSERT INTO STOCK
+		(STOCK_NO, PRODUCT_NO, COLOR_NO, SIZE_NO, STOCK_QTY) 
+    	VALUES (STOCK_STOCK_NO_SEQ.NEXTVAL, PRODUCT_PRODUCT_NO_SEQ.CURRVAL, 
+    			 #{color.colorNo}, #{size.sizeNo}, #{stockQty})
+   	</insert>
+   	
+   	
+   	
+   	
+   	
+   
+    <!--UPDATE PRODUCT-->
+    <update id="updateProductSales" parameterType="map">
+    UPDATE product
+    SET product_sales = product_sales + #{quantity}
+    WHERE product_no = #{productNo}
+</update>
+
+    
+    
+    <update id="updateProduct" parameterType="Product">
+   		UPDATE product 
+   		SET product_name=#{productName}, product_price=#{productPrice},
+   			category_no=#{category.categoryNo}, sub_category_no=#{subCategory.categoryNo}
+   		WHERE product_no=#{productNo}
+    </update>
+    <insert id="insertProductImageForUpdate" parameterType="ProductImage">
+   		INSERT INTO PRODUCT_IMAGE
+		(PRODUCT_IMAGE_NO, PRODUCT_IMAGE_NAME, PRODUCT_NO)
+		VALUES (PRODUCT_IMAGE_PRODUCT_IMAGE_NO_SEQ.NEXTVAL, #{productImageName}, #{product.productNo})
+   	</insert>
+   	<insert id="insertProductColorForUpdate" parameterType="Color">
+   		INSERT INTO PRODUCT_COLOR
+		(PRODUCT_COLOR_NO, PRODUCT_NO, COLOR_NO)
+		VALUES (PRODUCT_COLOR_PRODUCT_COLOR_NO_SEQ.NEXTVAL, #{product.product_no}, #{colorNo})
+   	</insert>
+   	<insert id="insertProductSizeForUpdate" parameterType="Size">
+   		INSERT INTO PRODUCT_SIZE
+		(PRODUCT_SIZE_NO, PRODUCT_NO, SIZE_NO) 
+		VALUES (PRODUCT_SIZE_PRODUCT_SIZE_NO_SEQ.NEXTVAL, #{product.product_no}, #{sizeNo})
+   	</insert>
+   	<insert id="insertProductStockForUpdate" parameterType="Stock">
+   		INSERT INTO STOCK
+		(STOCK_NO, PRODUCT_NO, COLOR_NO, SIZE_NO, STOCK_QTY) 
+    	VALUES (STOCK_STOCK_NO_SEQ.NEXTVAL, #{product.product_no}, 
+    			 #{color.colorNo}, #{size.sizeNo}, #{stockQty})
+   	</insert>
+   	<select id="findProductStock" parameterType="int" resultMap="productResultMap">
+   		select 
+        st.stock_qty
+		from product p
+		join stock st on p.product_no = st.product_no
+		where p.product_no = #{productNo} and st.color_no = #{colorNo} and st.size_no = #{sizeNo}
+   	</select>
+    <update id="updateProductStock" parameterType="int">
+   		UPDATE stock SET stock_qty = #{stockQty} WHERE product_no = #{productNo} and color_no = #{colorNo} and size_no = #{sizeNo}
+    </update>
+    
+    
+    
+    
+    
+    <!--DELETE PRODUCT -->
+    <delete id="deleteProduct" parameterType="int">
+    	DELETE FROM product WHERE product_no=#{productNo}
+    </delete>
+    <delete id="deleteProductImage" parameterType="int">
+    	DELETE FROM product_image WHERE product_no=#{productNo}
+    </delete>
+    <delete id="deleteProductColor" parameterType="int">
+    	DELETE FROM product_color WHERE product_no=#{productNo}
+    </delete>
+    <delete id="deleteProductSize" parameterType="int">
+    	DELETE FROM product_size WHERE product_no=#{productNo}
+    </delete>
+    <delete id="deleteProductStock" parameterType="int">
+    	DELETE FROM stock WHERE product_no=#{productNo}
+    </delete>	 
+   	
+   	
+   	
+   	
+    <!--카테고리 CRUD-->
+    <select id="selectCategoryAll" resultType="Category">
+    	select category_no, category_name from category
+    </select>
+    <insert id="insertCategory" parameterType="Category">
+    	INSERT INTO 
+    	CATEGORY (CATEGORY_NO, CATEGORY_NAME)
+    	VALUES (CATEGORY_CATEGORY_NO_SEQ.NEXTVAL, #{categoryName})
+    </insert>
+    <update id="updateCategoryByNo" parameterType="Category">
+    	UPDATE CATEGORY
+    	SET CATEGORY_NAME = #{categoryName} 
+    	WHERE CATEGORY_NO = #{categoryNo} 
+    </update>
+    <delete id="deleteCategoryByNo" parameterType="int">
+    	DELETE FROM
+    	CATEGORY 
+    	WHERE CATEGORY_NO = #{categoryNo}
+    </delete>
+    
+    <!--하위 카테고리 CRUD-->
+    <select id="selectSubCategoryAll" resultType="Category">
+    	select sub_category_no as category_no, sub_category_name as category_name from sub_category
+    </select>
+    <insert id="insertSubCategory" parameterType="Category">
+    	INSERT INTO 
+    	SUB_CATEGORY (SUB_CATEGORY_NO, SUB_CATEGORY_NAME)
+    	VALUES (SUB_CATEGORY_SUB_CATEGORY_NO_SEQ.NEXTVAL, #{categoryName})
+    </insert>
+    <update id="updateSubCategoryByNo" parameterType="Category">
+    	UPDATE SUB_CATEGORY
+    	SET SUB_CATEGORY_NAME = #{categoryName} 
+    	WHERE SUB_CATEGORY_NO = #{categoryNo} 
+    </update>
+    <delete id="deleteSubCategoryByNo" parameterType="int">
+    	DELETE 
+    	FROM SUB_CATEGORY 
+    	WHERE SUB_CATEGORY_NO = #{categoryNo}
+    </delete>
+    
+    
+    <!--COLOR CRUD-->
+    <select id="selectColorAll" resultType="Color">
+    	select color_no, color_name, color_code from color
+    </select>
+    <insert id="insertColor" parameterType="Color">
+    	INSERT INTO 
+    	COLOR (COLOR_NO, COLOR_NAME, COLOR_CODE)
+    	VALUES (COLOR_COLOR_NO_SEQ.NEXTVAL, #{colorName}, #{color_code})
+    </insert>
+    <update id="updateColorByNo" parameterType="Color">
+    	UPDATE COLOR
+    	SET COLOR_NAME = #{colorName}, COLOR_CODE = #{colorCode} 
+    	WHERE COLOR_NO = #{colorNo} 
+    </update>
+    <delete id="deleteColorByNo" parameterType="int">
+    	DELETE FROM COLOR 
+    	WHERE COLOR_NO = #{colorNo}
+    </delete>
+    
+    
+    
+    <!--SIZE CRUD-->
+    <select id="selectSizeAll" resultType="Size">
+    	select size_no, size_name from sizes
+    </select>
+     <insert id="insertSize" parameterType="Size">
+    	INSERT INTO 
+    	SIZES (SIZE_NO, SIZE_NAME)
+    	VALUES (SIZE_SIZE_NO_SEQ.NEXTVAL, #{sizeName})
+    </insert>
+    <update id="updateSizeByNo" parameterType="Size">
+    	UPDATE SIZES
+    	SET SIZE_NAME = #{sizeName} 
+    	WHERE SIZE_NO = #{sizeNo} 
+    </update>
+    <delete id="deleteSizeByNo" parameterType="int">
+    	DELETE FROM SIZES 
+    	WHERE SIZE_NO = #{sizeNo}
+    </delete>
+    
+</mapper>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    
+    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <link rel="stylesheet" href="./css/index.css?ver=3">
+    <script src="./js/index.js"></script>
+
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <!-- 로고 -->
+            <div class="hd_container">
+                <div class="top_logo">
+                    <a href=""><img src="img/header/top_logo_pc.png" alt=""></a>
+                </div>
+                <div class="top_menu">
+                    <ul class="top_menu_dep1">
+                        <!-- <li> 하나당 카테고리분류1개 -->
+                        <li><a href="">베스트</a></li>
+                        <li><a href="">신상품</a></li>
+                        <li><a href="">여성</a>
+                            <div class="top_menu_dep2_container">
+                                <div class="top_menu_dep2_innerContainer">
+                                    <ul class="top_menu_dep2_01">
+                                        <li><a href="">베스트</a></li>
+                                        <li><a href="">신상품</a></li>
+                                    </ul>
+                                    <ul class="top_menu_dep2_02">
+                                        <li><a href="">신상품</a></li>
+                                        <li><a href="">아우터</a></li>
+                                        <li><a href="">상의</a></li>
+                                        <li><a href="">하의</a></li>
+                                    </ul>
+                                    <ul class="top_menu_dep2_03">
+                                        <li>
+                                            <img src="img/product/024110f45ce6d4d2dee098e519435d48.jpg" alt="">
+                                        </li>
+                                        <li>
+                                            <img src="img/product/053f0f2c7e5aaa2475e6e69bf165223c.jpg" alt="">
+                                        </li>
+                                        <li>
+                                            <img src="img/product/07edcc45d97465c73c4b3c512d725244.jpg" alt="">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- (회원가입,로그인),검색,찜리스트,바구니 -->
+                <div class="top_menber">
+                    <ul>
+                        <li class="top_menuUserIcon">
+                            <a href=""><img src="img/header/top_mypage.png" alt="" class="top_menber_bt_bk"></a>
+                            <div>
+                                <a href="">LOGOUT</a>
+                                <a href="">MYPAGE</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a href=""><img src="img/header/top_search.png" alt="" class="top_menber_bt_bk"></a>
+                        </li>
+                        <li>
+                            <a href=""><img src="img/header/top_wish.png" alt="" class="top_menber_bt_bk"></a>
+                        </li>
+                        <li>
+                            <a href=""><img src="img/header/top_cart_pc.png" alt="" class="top_menber_bt_bk"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="prodListContainer">
+                <div class="prodListHeader">
+                    <div class="prodListTitle">
+                        <h3>맨</h3>
+                    </div>
+                    <div class="prodListHeadbar">
+                        <ul>
+                            <li><a href="">상의</a></li>
+                            <li><a href="">하의</a></li>
+                            <li><a href="">아우터</a></li>
+                        </ul>
+                        <div class="prodListItemsCount">
+                            <span>860 items</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <ul class="bestProdList">
+                        <li>
+                            <div class="prodBox">
+                                <div class="prod">
+                                    <div class="prodImg">
+                                        <a href=""><img src="img/product/024110f45ce6d4d2dee098e519435d48.jpg" alt=""></a>
+                                    </div>
+                                </div>
+                                <div class="discription">
+                                    <div class="prodName">
+                                        <a href=""><span>[리사이클] 베이직 퍼플리스 집업</span></a>
+                                        <img src="img/List/icon_202009041749300600.png" alt="찜버튼icon">
+                                    </div>
+                                    <div class="prodPrice">
+                                        <span>34,000</span>
+                                    </div>
+                                    <div class="ProdColor">
+                                        <ul>
+                                            <li style="background-color:#000000;"><span>#000000</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="ProdReview">
+                                        <span>리뷰 1건<!-- 몇건 숫자데이터--></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="prodBox">
+                                <div class="prod">
+                                    <div class="prodImg">
+                                        <a href=""><img src="img/product/024110f45ce6d4d2dee098e519435d48.jpg" alt=""></a>
+                                    </div>
+                                </div>
+                                <div class="discription">
+                                    <div class="prodName">
+                                        <a href=""><span>[리사이클] 베이직 퍼플리스 집업</span></a>
+                                        <img src="img/List/icon_202009041749300600.png" alt="찜버튼icon">
+                                    </div>
+                                    <div class="prodPrice">
+                                        <span>34,000</span>
+                                    </div>
+                                    <div class="ProdColor">
+                                        <ul>
+                                            <li style="background-color:#000000;"><span>#000000</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="ProdReview">
+                                        <span>리뷰 1건<!-- 몇건 숫자데이터--></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="prodBox">
+                                <div class="prod">
+                                    <div class="prodImg">
+                                        <a href=""><img src="img/product/024110f45ce6d4d2dee098e519435d48.jpg" alt=""></a>
+                                    </div>
+                                </div>
+                                <div class="discription">
+                                    <div class="prodName">
+                                        <a href=""><span>[리사이클] 베이직 퍼플리스 집업</span></a>
+                                        <img src="img/List/icon_202009041749300600.png" alt="찜버튼icon">
+                                    </div>
+                                    <div class="prodPrice">
+                                        <span>34,000</span>
+                                    </div>
+                                    <div class="ProdColor">
+                                        <ul>
+                                            <li style="background-color:#000000;"><span>#000000</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="ProdReview">
+                                        <span>리뷰 1건<!-- 몇건 숫자데이터--></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="prodBox">
+                                <div class="prod">
+                                    <div class="prodImg">
+                                        <a href=""><img src="img/product/024110f45ce6d4d2dee098e519435d48.jpg" alt=""></a>
+                                    </div>
+                                </div>
+                                <div class="discription">
+                                    <div class="prodName">
+                                        <a href=""><span>[리사이클] 베이직 퍼플리스 집업</span></a>
+                                        <img src="img/List/icon_202009041749300600.png" alt="찜버튼icon">
+                                    </div>
+                                    <div class="prodPrice">
+                                        <span>34,000</span>
+                                    </div>
+                                    <div class="ProdColor">
+                                        <ul>
+                                            <li style="background-color:#000000;"><span>#000000</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="ProdReview">
+                                        <span>리뷰 1건<!-- 몇건 숫자데이터--></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="prodBox">
+                                <div class="prod">
+                                    <div class="prodImg">
+                                        <a href=""><img src="img/product/024110f45ce6d4d2dee098e519435d48.jpg" alt=""></a>
+                                    </div>
+                                </div>
+                                <div class="discription">
+                                    <div class="prodName">
+                                        <a href=""><span>[리사이클] 베이직 퍼플리스 집업</span></a>
+                                        <img src="img/List/icon_202009041749300600.png" alt="찜버튼icon">
+                                    </div>
+                                    <div class="prodPrice">
+                                        <span>34,000</span>
+                                    </div>
+                                    <div class="ProdColor">
+                                        <ul>
+                                            <li style="background-color:#000000;"><span>#000000</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="ProdReview">
+                                        <span>리뷰 1건<!-- 몇건 숫자데이터--></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="prodBox">
+                                <div class="prod">
+                                    <div class="prodImg">
+                                        <a href=""><img src="img/product/024110f45ce6d4d2dee098e519435d48.jpg" alt=""></a>
+                                    </div>
+                                </div>
+                                <div class="discription">
+                                    <div class="prodName">
+                                        <a href=""><span>[리사이클] 베이직 퍼플리스 집업</span></a>
+                                        <img src="img/List/icon_202009041749300600.png" alt="찜버튼icon">
+                                    </div>
+                                    <div class="prodPrice">
+                                        <span>34,000</span>
+                                    </div>
+                                    <div class="ProdColor">
+                                        <ul>
+                                            <li style="background-color:#000000;"><span>#000000</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="ProdReview">
+                                        <span>리뷰 1건<!-- 몇건 숫자데이터--></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="prodBox">
+                                <div class="prod">
+                                    <div class="prodImg">
+                                        <a href=""><img src="img/product/024110f45ce6d4d2dee098e519435d48.jpg" alt=""></a>
+                                    </div>
+                                </div>
+                                <div class="discription">
+                                    <div class="prodName">
+                                        <a href=""><span>[리사이클] 베이직 퍼플리스 집업</span></a>
+                                        <img src="img/List/icon_202009041749300600.png" alt="찜버튼icon">
+                                    </div>
+                                    <div class="prodPrice">
+                                        <span>34,000</span>
+                                    </div>
+                                    <div class="ProdColor">
+                                        <ul>
+                                            <li style="background-color:#000000;"><span>#000000</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="ProdReview">
+                                        <span>리뷰 1건<!-- 몇건 숫자데이터--></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="prodBox">
+                                <div class="prod">
+                                    <div class="prodImg">
+                                        <a href=""><img src="img/product/024110f45ce6d4d2dee098e519435d48.jpg" alt=""></a>
+                                    </div>
+                                </div>
+                                <div class="discription">
+                                    <div class="prodName">
+                                        <a href=""><span>[리사이클] 베이직 퍼플리스 집업</span></a>
+                                        <img src="img/List/icon_202009041749300600.png" alt="찜버튼icon">
+                                    </div>
+                                    <div class="prodPrice">
+                                        <span>34,000</span>
+                                    </div>
+                                    <div class="ProdColor">
+                                        <ul>
+                                            <li style="background-color:#000000;"><span>#000000</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="ProdReview">
+                                        <span>리뷰 1건<!-- 몇건 숫자데이터--></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="prodBox">
+                                <div class="prod">
+                                    <div class="prodImg">
+                                        <a href=""><img src="img/product/024110f45ce6d4d2dee098e519435d48.jpg" alt=""></a>
+                                    </div>
+                                </div>
+                                <div class="discription">
+                                    <div class="prodName">
+                                        <a href=""><span>[리사이클] 베이직 퍼플리스 집업</span></a>
+                                        <img src="img/List/icon_202009041749300600.png" alt="찜버튼icon">
+                                    </div>
+                                    <div class="prodPrice">
+                                        <span>34,000</span>
+                                    </div>
+                                    <div class="ProdColor">
+                                        <ul>
+                                            <li style="background-color:#000000;"><span>#000000</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="ProdReview">
+                                        <span>리뷰 1건<!-- 몇건 숫자데이터--></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="prodBox">
+                                <div class="prod">
+                                    <div class="prodImg">
+                                        <a href=""><img src="img/product/024110f45ce6d4d2dee098e519435d48.jpg" alt=""></a>
+                                    </div>
+                                </div>
+                                <div class="discription">
+                                    <div class="prodName">
+                                        <a href=""><span>[리사이클] 베이직 퍼플리스 집업</span></a>
+                                        <img src="img/List/icon_202009041749300600.png" alt="찜버튼icon">
+                                    </div>
+                                    <div class="prodPrice">
+                                        <span>34,000</span>
+                                    </div>
+                                    <div class="ProdColor">
+                                        <ul>
+                                            <li style="background-color:#000000;"><span>#000000</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="ProdReview">
+                                        <span>리뷰 1건<!-- 몇건 숫자데이터--></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="ftContainer">
+                <div class="ftSection01">
+                    <span>111-222</span>
+                    <br>
+                    <span>상담시간:안해줘</span>
+                    <br>
+                    <span>email:babo1@naver.com(단체주문 문의)</span>
+                </div>
+                <div class="ftSection02">
+                    <ul>
+                        <li>브랜드소개</li>
+                        <li>개인정보 처리방침</li>
+                        <li>공지사항</li>
+                    </ul>
+                </div>
+                <div class="ftSection03">
+                    <ul>
+                        <li><a href="">앱 다운로드</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
